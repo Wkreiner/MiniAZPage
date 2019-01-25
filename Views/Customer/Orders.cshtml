@@ -1,0 +1,37 @@
+﻿@model AXMiniPage.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "Orders";
+
+}
+<div class="container-fluid">
+    <h3>Orders</h3>
+    <div class="row">
+        <div class="col-md-6">&nbsp;&nbsp;<b>Name</b></div>
+        <div class="col-md-6"><b>Customer #</b></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">&nbsp;&nbsp;@Model.FullName</div>
+        <div class="col-md-6">@Model.CustomerNumber</div>
+    </div>
+    <br />
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th><b>Order Id</b></th>
+            <th><b>Order Date</b></th>
+            <th><b>Item Description</b></th>
+            <th><b>Total</b></th>
+        </tr>
+        @foreach (CustomerOrder co in Model.Orders)
+        {
+            <tr>
+                <td>@co.OrderId</td>
+                <td>@co.OrderDate</td>
+                <td>@co.Description</td>
+                <td>$@co.Total.ToString()</td>
+            </tr>
+        }
+    </table>
+</div>
+
+
